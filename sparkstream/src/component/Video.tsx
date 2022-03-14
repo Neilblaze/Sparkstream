@@ -1,4 +1,4 @@
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box, Text, Center } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineWifi } from "react-icons/ai";
 import { BsFillMicFill } from "react-icons/bs";
@@ -13,14 +13,26 @@ const Video = ({ ascii, peerId, webcamRef }: VideoProp) => {
   return (
     <Flex justifyContent="center" borderRadius="15px" alignItems="center">
       {ascii ? (
-        <pre className="overflow-hidden">{ascii}</pre>
+        <div
+          style={{
+            transform: "scale(0.1)",
+            display: "flex",
+            color: "white",
+            width: "500px",
+            position: "absolute",
+            top: "0",
+            left: "0",
+            borderRadius: "15px",
+
+            transformOrigin: "top left",
+          }}
+        >
+          <pre>{ascii}</pre>
+        </div>
       ) : (
-        <Box className="text-3xl" color="white">
-          Your call ID is:
-          <span className="cursor-pointer font-semibold" title="Click to copy">
-            {peerId}
-          </span>
-        </Box>
+        <Center className="text-3xl" color="white" h="30vh">
+          No one is connecting, Please wait...
+        </Center>
       )}
 
       <video
@@ -31,6 +43,7 @@ const Video = ({ ascii, peerId, webcamRef }: VideoProp) => {
           position: "absolute",
           bottom: "0",
           right: "0",
+          backgroundColor: "black",
           zIndex: 999,
         }}
       ></video>

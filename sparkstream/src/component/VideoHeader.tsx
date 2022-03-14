@@ -9,11 +9,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { AiFillInfoCircle, AiOutlineMenu, AiOutlineBell } from "react-icons/ai";
+import { parsePath, useParams } from "react-router-dom";
 
 type VideoHeaderPrep = {
   peerId: string;
 };
 const VideoHeader = ({ peerId }: VideoHeaderPrep) => {
+  const param = useParams();
+
   const time = new Date().toLocaleTimeString();
   return (
     <Flex p="2" flexDirection="column" justifyContent="center">
@@ -25,7 +28,7 @@ const VideoHeader = ({ peerId }: VideoHeaderPrep) => {
           <Heading size="md" mr={3} color="#00C4DF">
             Room ID:
           </Heading>
-          <Text color="white">{peerId}</Text>
+          <Text color="white">{param.id ? param.id : peerId}</Text>
         </Flex>
         <IconButton
           bg="transparent"

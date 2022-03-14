@@ -19,6 +19,7 @@ const Chat = () => {
   ) => {
     e.preventDefault();
     const Usermessage = {
+      id: Date.now(),
       username: "Kai",
       self: true,
       time: Date.now(),
@@ -36,7 +37,7 @@ const Chat = () => {
       </Center>
       <Box style={{ overflow: "scroll", maxHeight: "150px" }} p={1}>
         {chatMessage.map((m) => (
-          <>
+          <Flex key={m.id} flexDirection="column">
             <Flex
               alignItems="center"
               mt={5}
@@ -66,7 +67,7 @@ const Chat = () => {
                 4 min ago
               </Text>
             </Flex>
-          </>
+          </Flex>
         ))}
       </Box>
       <Flex

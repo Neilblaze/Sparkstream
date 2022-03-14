@@ -1,5 +1,5 @@
 import { Flex, IconButton, Button, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useMemo } from "react";
 import {
   AiOutlineArrowLeft,
   AiOutlineWifi,
@@ -31,7 +31,11 @@ const VideoBottom = ({
   handleStopCamera,
   handleStopMic,
 }: VideoBottomProp) => {
-  const number = Math.floor(Math.random() * (100 - 1) + 1);
+  const randomNum = () => {
+    const x = Math.floor(Math.random() * (100 - 1) + 1);
+    return x;
+  };
+  const number = useMemo(() => randomNum(), []);
 
   return (
     <>
