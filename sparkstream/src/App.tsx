@@ -6,9 +6,13 @@ import Home from "./page/Home";
 import VideoChat from "./page/VideoChat";
 import JoinVideoChat from "./page/JoinVideoChat";
 import Code from "./component/Code";
+import Homepage from "./page/Homepage";
+import Login from "./page/Login";
+import Register from "./page/Register";
 // import your route components too
 
 export const App = () => {
+
   const bg = extendTheme({
     styles: {
       global: () => ({
@@ -22,13 +26,19 @@ export const App = () => {
     <ChakraProvider theme={bg}>
       <BrowserRouter>
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/video" element={<VideoChat />} />
           <Route path="join/:id" element={<JoinVideoChat />} />
           <Route path="test" element={<Code />} />
+
+          {/* Aziz */}
+          <Route path="home" element={<Homepage />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+
         </Routes>
       </BrowserRouter>
-      ,
     </ChakraProvider>
   );
 };
