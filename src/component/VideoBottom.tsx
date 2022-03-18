@@ -1,5 +1,5 @@
 import { Flex, IconButton, Button, Text } from "@chakra-ui/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   AiOutlineArrowLeft,
   AiOutlineWifi,
@@ -37,6 +37,47 @@ const VideoBottom = ({
   };
   const number = useMemo(() => randomNum(), []);
   const navigate = useNavigate();
+
+  const [isRec, setIsRec] = useState<boolean | null>(null);
+
+  async function startRecording() {
+    stream = await navigator.mediaDevices.getDisplayMedia({
+      video: { mediaSource: "screen" }
+    });
+    recorder = new MediaRecorder(stream);
+
+    const chunks = [];
+    recorder.ondataavailable = (e) => chunks.push(e.data);
+    recorder.onstop = (e) => {
+      const completeBlob = new Blob(chunks, { type: chunks[0].type });
+      const url = URL.createObjectURL(completeBlob);
+      video.setAttribute("src", url);
+      download.setAttribute("href", url);
+      download.download = "RecordedVideo.webm";
+      download.classList.remove("hidden");
+    };
+
+    recorder.start();
+  }
+
+  function clickHanler() {
+
+    if (isRec === null) {
+      setIsRec(true);
+      startRecording();
+    } else if (isRec === true) {
+      setIsRec(false);
+      recorder.stop();
+      stream.getVideoTracks()[0].stop();
+
+    } else {
+      console.log("WAS FALSE");
+
+    }
+
+
+  }
+
   return (
     <>
       <Flex width="100%" alignItems="center" bg="transparent">
@@ -170,6 +211,8 @@ const VideoBottom = ({
               h={10}
               mr={3}
               borderRadius="17px"
+              onClick={() => clickHanler()}
+            // RECORDING STARTS
             />
             <Button width="10px" mr={3} bg="#249782" color="white">
               CC

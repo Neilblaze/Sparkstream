@@ -1,3 +1,5 @@
+// This is for the chat part (Used while Development)
+
 export const mockChatMessage = [
   {
     id: 1,
@@ -28,3 +30,5 @@ export const mockChatMessage = [
     time: "",
   },
 ];
+
+// Integration with LibP2P is TODO
