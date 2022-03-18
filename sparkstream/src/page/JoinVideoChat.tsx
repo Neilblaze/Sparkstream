@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 const JoinVideoChat = () => {
   let params = useParams();
+
   console.log(params.id);
   const callId = params.id!;
   const [stream, setStream] = useState<MediaStream | null>(null);
@@ -142,7 +143,10 @@ const JoinVideoChat = () => {
           <GridItem rowSpan={1} colSpan={12} borderRadius="15px">
             <VideoHeader peerId={peerId} />
           </GridItem>
-          <GridItem rowSpan={32} colSpan={7} bg="black"></GridItem>
+          <GridItem rowSpan={32} colSpan={7} bg="black">
+            <iframe id="frame" title="share code" src="https://sparkstream-collab.netlify.app/?room=FaberWeb3" height="500px" width="100%"></iframe>
+
+          </GridItem>
           <GridItem
             rowSpan={17}
             colSpan={5}
@@ -153,19 +157,15 @@ const JoinVideoChat = () => {
           >
             <Video ascii={ascii} peerId={peerId} webcamRef={webcamRef} />
           </GridItem>
-          <GridItem rowSpan={15} colSpan={2} p="1">
-            <Preference />
-          </GridItem>
 
           <GridItem
             rowSpan={15}
-            colSpan={3}
+            colSpan={5}
             borderRadius="15px"
             position="relative"
             bg="white"
-            border="4px solid #A676E3"
           >
-            <Chat />
+            <Chat myId="host" enemyId="guest" />
           </GridItem>
           <GridItem rowSpan={5} colSpan={12} borderRadius="15px">
             <VideoBottom

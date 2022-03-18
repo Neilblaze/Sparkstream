@@ -84,7 +84,7 @@ const Video = ({ ascii, peerId, webcamRef }: VideoProp) => {
           color="#ABAAB0"
           style={{ width: "15px", height: "auto", marginRight: "3px" }}
         />
-        <Text>Kai You</Text>
+        {/* <Text>Kai You</Text> */}
       </Flex>
 
       {/* <Center position="absolute">

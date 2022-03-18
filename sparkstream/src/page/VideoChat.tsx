@@ -10,6 +10,9 @@ import Video from "../component/Video";
 const VideoChat = () => {
   const [stream, setStream] = useState<MediaStream | null>(null);
 
+
+  // CHAT 
+  const [messages, setMessages] = useState([])
   //For icon on camera switch
   const [cameraCloseIcon, setCameraCloseIcon] = useState<boolean>(false);
   const [micCloseIcon, setMicCloseIcon] = useState<boolean>(true);
@@ -156,7 +159,11 @@ const VideoChat = () => {
           <GridItem rowSpan={1} colSpan={12} borderRadius="15px">
             <VideoHeader peerId={peerId} />
           </GridItem>
-          <GridItem rowSpan={32} colSpan={7} bg="white"></GridItem>
+          <GridItem rowSpan={32} colSpan={7} bg="white">
+
+            <iframe id="frame" title="share code" src="https://sparkstream-collab.netlify.app/?room=FaberWeb3" height="500px" width="100%"></iframe>
+
+          </GridItem>
           <GridItem
             rowSpan={17}
             colSpan={5}
@@ -168,18 +175,15 @@ const VideoChat = () => {
           >
             <Video ascii={ascii} peerId={peerId} webcamRef={webcamRef} />
           </GridItem>
-          <GridItem rowSpan={15} colSpan={2} border="2px solid #24F2C1">
-            <Preference />
-          </GridItem>
 
           <GridItem
             rowSpan={15}
-            colSpan={3}
+            colSpan={5}
             borderRadius="15px"
             position="relative"
             bg="white"
           >
-            <Chat />
+            <Chat myId="host" enemyId="guest" />
           </GridItem>
           <GridItem rowSpan={5} colSpan={12} borderRadius="15px">
             <VideoBottom

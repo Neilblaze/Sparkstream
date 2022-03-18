@@ -1,3 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.sent {
+  display: inline-block;
+  padding: 6px 16px;
+  margin: 4px 0;
+  border-radius: 999px;
+  background: rgb(14 165 233);
+  color: white;
+}
+.sent--wrapper{
+    display: flex;
+    flex-direction: row;
+    padding: 0 12px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.hidden{
+    display: none;
+}
+.received--wrapper{
+    display: flex;
+    padding: 0 12px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.received {
+    display: inline-block;
+    padding: 6px 16px;
+    margin: 4px 0;
+    border-radius: 999px;
+    background: rgb(68 64 60);
+    color: white;
+  }

@@ -15,7 +15,7 @@ import {
 } from "react-icons/bs";
 import { GrMore } from "react-icons/gr";
 import { MdOutlineScreenShare } from "react-icons/md";
-
+import { useNavigate } from 'react-router-dom'
 type VideoBottomProp = {
   cameraCloseIcon: boolean;
   micCloseIcon: boolean;
@@ -36,10 +36,10 @@ const VideoBottom = ({
     return x;
   };
   const number = useMemo(() => randomNum(), []);
-
+  const navigate = useNavigate();
   return (
     <>
-      <Flex width="100vw" alignItems="center">
+      <Flex width="100%" alignItems="center" bg="transparent">
         <Flex flex="1" alignItems="center">
           <IconButton
             colorScheme="blackAlpha"
@@ -48,7 +48,7 @@ const VideoBottom = ({
             icon={<AiOutlineArrowLeft color="white" />}
             mr={3}
           />
-          <Text color="white" fontWeight="bold">
+          <Text color="black" fontWeight="bold">
             Hackathon Discussion 101
           </Text>
         </Flex>
@@ -152,6 +152,7 @@ const VideoBottom = ({
               w={10}
               h={10}
               borderRadius="50%"
+              onClick={() => navigate("/home")}
             />
           </Flex>
         </Flex>
@@ -180,6 +181,7 @@ const VideoBottom = ({
                 background: "whiteAlpha.500",
                 color: "white.500",
               }}
+
               icon={<BsFullscreen />}
               w={10}
               h={10}
